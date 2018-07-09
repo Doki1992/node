@@ -1,5 +1,5 @@
 var express = require('express');
-
+var fortunes = require('./lib/fortune.js');
 var app = express();
 var handlebars = require('express3-handlebars')
 					.create({defaultLayout: 'main'});
@@ -9,10 +9,10 @@ app.set('view engine', 'handlebars');
 
 app.set('port', process.env.PORT || 3000);
 
-var fortunes = ['mike', 'julio', 'kevin', 'ernesto'];
+
 
 app.get('/', function(req, res){
-	res.render('home', {fortunes: fortunes[0]});
+	res.render('home', {fortunes: fortunes.getFortune()});
 });
 
 
